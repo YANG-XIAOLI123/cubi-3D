@@ -22,6 +22,11 @@ let g;
 
 //
 
+let font;
+function preload() {
+  font = loadFont("./IMPACT.TTF");
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight, "webgl");
 
@@ -33,7 +38,7 @@ function setup() {
       x: random(-distanza, distanza),
       y: random(-distanza, distanza),
       z: random(-distanza, distanza),
-      size: random(1, 200),
+      size: random(10, 200),
       color: random(["pink", "yellow", "blue"]),
       rotationFunction: random([rotateX, rotateY]),
     };
@@ -42,13 +47,15 @@ function setup() {
 }
 
 function draw() {
-  background("white");
+  background("	MediumOrchid");
   orbitControl();
   rotateY(frameCount * 0.001);
   noStroke();
 
   g.background("black");
-  g.text("KUN", 0, g.width - 30);
+  g.textFont(font);
+  g.textAlign(CENTER, CENTER);
+  g.text("KUN", g.width / 2, g.height / 2);
   g.textSize(40);
   g.fill("DeepPink");
 
@@ -62,7 +69,7 @@ function draw() {
     cubo.rotationFunction(velocita);
     rotateZ(velocita);
 
-    box(cubo.size);
+    box(cubo.size, 50);
     pop();
   }
 }
@@ -70,3 +77,7 @@ function draw() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
+//function mouseClicked() {
+//saveGif("GIF", 3);
+//}
