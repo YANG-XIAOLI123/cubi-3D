@@ -8,7 +8,7 @@ function setup() {
       x: random(-1000, 1000),
       y: random(-1000, 1000),
       z: random(-1000, 1000),
-      size: 100,
+      size: random(50, 300),
       color: random(["DeepPink", "	MediumOrchid", "MediumSlateBlue"]),
       rotationFunction: random([rotateX, rotateY, rotateZ]),
     };
@@ -24,7 +24,7 @@ function draw() {
   for (let cubo of cubi) {
     push();
     translate(cubo.x, cubo.y, cubo.z);
-    cubo.rotationFunction(frameCount / 10);
+    cubo.rotationFunction(frameCount / 20);
 
     fill(cubo.color);
     box(cubo.size);
